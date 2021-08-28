@@ -12,8 +12,25 @@
             width: 600px;
             height: 600px;
             border-radius: 50%;
-            border: #FBE251 2px solid;
+            border: #E83015 5px solid;
             background-color: #113285;
+        }
+        .kedu{      
+            width: 600px;
+            height: 600px;
+            position: absolute;
+        }
+        .kedu div{
+            width: 20px;
+            height: 590px;
+            position: absolute;
+            left: 290px;
+            color: #FBE251;
+        }
+        .clock span{
+            display: block;
+            position: absolute;
+            font-size: 30px;
         }
         .hand {
             position: absolute;
@@ -57,6 +74,20 @@
 <body>
 
 <div class="clock">
+    <div class="kedu">
+        <div><span>12</span></div>
+        <div><span>1</span></div>
+        <div><span>2</span></div>
+        <div><span>3</span></div>
+        <div><span>4</span></div>
+        <div><span>5</span></div>
+        <div><span>6</span></div>
+        <div><span>7</span></div>
+        <div><span>8</span></div>
+        <div><span>9</span></div>
+        <div><span>10</span></div>
+        <div><span>11</span></div>
+    </div>
     <div class="hand hrHand">
         <div class="hr-hand"></div>
     </div>
@@ -69,10 +100,16 @@
 </div>
 
 <script>
-    // const info = document.querySelector('#info');
+    const info = document.querySelectorAll('.kedu div');
     const secHand = document.querySelector('.secHand');
     const minHand = document.querySelector('.minHand');
     const hrHand = document.querySelector('.hrHand');
+
+    for(let i = 0; i < info.length; i++) {
+        // 表面一圈是360度，共12個刻度，所以每個刻度為360/12=30度
+        info[i].style.transform = 'rotate(' + i * 30 +'deg)';
+        info[i].firstChild.style.transform = 'rotate(' + -i*30 +'deg)';
+    }
 
     const runClock = ()=>{
         const now = new Date;
